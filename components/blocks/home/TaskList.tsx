@@ -1,27 +1,31 @@
-import { ITask, ITaskList } from "@/types";
+"use client";
+
+import { ITaskList } from "@/types";
 import React from "react";
 
-const TaskList: React.FC<ITaskList> = ({ tasks }) => {
+const TaskList: React.FC<ITaskList> = ({ tasks, toggleTaskStatus }) => {
   return (
-    <ul className="mb-6 space-y-2">
-      {tasks.map((task: ITask) => (
+    <ul className="mt-2 space-y-2">
+      {tasks.map((task) => (
         <li
           key={task.id}
-          className="flex items-center rounded-lg border border-gray-200 bg-white p-3 shadow-sm"
+          className={`flex items-center rounded-lg border p-3 shadow-sm ${
+            task.isDone
+              ? "border-green-200 bg-green-100"
+              : "border-gray-200 bg-white"
+          }`}
         >
-          <span className="fw-600 flex-1 text-gray-800">{task.name}</span>
-          <button
-            type="button"
-            className="ml-2 text-sm text-blue-600 hover:text-blue-800"
+          <input
+            type="checkbox"
+            checked={task.isDone}
+            onChange={() => toggleTaskStatus(task.id)}
+            className="mr-2"
+          />
+          <span
+            className={`flex-1 ${task.isDone ? "text-gray-500 line-through" : "text-gray-800"}`}
           >
-            Edit
-          </button>
-          <button
-            type="button"
-            className="ml-2 text-sm text-red-600 hover:text-red-800"
-          >
-            Delete
-          </button>
+            {task.name}
+          </span>
         </li>
       ))}
     </ul>

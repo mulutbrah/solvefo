@@ -17,4 +17,5 @@ export interface IGoalList {
 
 export interface ITaskList {
   tasks: ITask[];
+  toggleTaskStatus: (taskId: number) => void;
 }

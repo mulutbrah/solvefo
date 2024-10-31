@@ -10,6 +10,10 @@ const GoalList: React.FC<IGoalList> = ({ goals, setGoals }) => {
     setGoals(updatedGoals);
   };
 
+  const handleTaskStatus = (goalId: number, taskId: number) => {
+    // change isDone
+  };
+
   return (
     <div>
       {goals.length > 0 && (
@@ -26,7 +30,10 @@ const GoalList: React.FC<IGoalList> = ({ goals, setGoals }) => {
                   Remove
                 </button>
               </li>
-              <TaskList tasks={goal.tasks} />
+              <TaskList
+                tasks={goal.tasks}
+                toggleTaskStatus={(taskId) => handleTaskStatus(goal.id, taskId)}
+              />
             </>
           ))}
         </ul>

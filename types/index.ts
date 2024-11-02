@@ -2,12 +2,13 @@ export interface IGoal {
   id: number;
   name: string;
   tasks: ITask[];
+  completed: boolean;
 }
 
 export interface ITask {
   id: number;
   name: string;
-  isDone: boolean;
+  completed: boolean;
 }
 
 export interface IGoalList {

@@ -10,19 +10,19 @@ const TaskList: React.FC<ITaskList> = ({ tasks, toggleTaskStatus }) => {
         <li
           key={task.id}
           className={`flex items-center rounded-lg border p-3 shadow-sm ${
-            task.isDone
+            task.completed
               ? "border-green-200 bg-green-100"
               : "border-gray-200 bg-white"
           }`}
         >
           <input
             type="checkbox"
-            checked={task.isDone}
+            checked={task.completed}
             onChange={() => toggleTaskStatus(task.id)}
             className="mr-2"
           />
           <span
-            className={`flex-1 ${task.isDone ? "text-gray-500 line-through" : "text-gray-800"}`}
+            className={`flex-1 ${task.completed ? "text-gray-500 line-through" : "text-gray-800"}`}
           >
             {task.name}
           </span>
